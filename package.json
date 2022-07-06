@@ -1,0 +1,21 @@
+{
+    "dependencies": {
+        "npm-run-all": "^4.1.5"
+    },
+    "scripts": {
+        "start": "pyright && pytest && yarn style",
+        "test": "nodemon -w tests -w radio_mlbee_client -x pytest tests",
+        "pyright": "nodemon -w radio_mlbee_client -w .venv -e .py -x pyright radio_mlbee_client tests",
+        "pytest": "nodemon -w tests -w radio_mlbee_client -e .py -x pytest tests radio_mlbee_client",
+        "style": "nodemon -w radio_mlbee_client -w tests -x \"black tests radio_mlbee_client && python -m flake8\"",
+        "docstyle": "nodemon -w radio_mlbee_client -w tests -x pydocstyle --convention=google tests radio_mlbee_client",
+        "pylint": "nodemon -w radio_mlbee_client -e .py -x pylint radio_mlbee_client",
+        "test:radio_mlbee_client": "nodemon -w tests -e .py -x pytest -k radio_mlbee_client tests",
+        "publish": "poetry build && poetry publish",
+        "black": "black tests radio_mlbee_client",
+        "flake8": "flake8 tests radio_mlbee_client",
+        "pflake8": "pflake8 tests radio_mlbee_client",
+        "pep257": "pep257 tests radio_mlbee_client",
+        "final": "run-s docstyle black flake8 pytest"
+    }
+}
